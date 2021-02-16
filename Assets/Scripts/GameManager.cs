@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
             ResourceController resource = obj.GetComponent<ResourceController> ();
 
             resource.SetConfig (config);
+
             _activeResources.Add (resource);
         }
     }
