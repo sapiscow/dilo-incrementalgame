@@ -38,6 +38,11 @@ public class ResourceController : MonoBehaviour
         return _config.UpgradeCost * _level;
     }
 
+    public double GetUnlockCost ()
+    {
+        return _config.UnlockCost;
+    }
+
     public void UpgradeLevel ()
     {
         double upgradeCost = GetUpgradeCost ();
