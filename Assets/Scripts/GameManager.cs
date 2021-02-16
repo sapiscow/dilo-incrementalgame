@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     private List<ResourceController> _activeResources = new List<ResourceController> ();
     private float _collectSecond;
 
-    private double _totalGold;
+    public double TotalGold { get; private set; }
 
     private void Start ()
     {
@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
             ResourceController resource = obj.GetComponent<ResourceController> ();
 
             resource.SetConfig (config);
+
             _activeResources.Add (resource);
         }
     }
@@ -79,8 +80,8 @@ public class GameManager : MonoBehaviour
 
     private void AddGold (double value)
     {
-        _totalGold += value;
-        GoldInfo.text = $"Gold: { _totalGold.ToString ("0") }";
+        TotalGold += value;
+        GoldInfo.text = $"Gold: { TotalGold.ToString ("0") }";
     }
 }
 
