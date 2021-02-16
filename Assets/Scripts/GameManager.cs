@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
             _collectSecond = 0f;
         }
 
-        CheckUpgradeCost ();
+        CheckResourceCost ();
 
         CoinIcon.transform.localScale = Vector3.LerpUnclamped (CoinIcon.transform.localScale, Vector3.one * 2f, 0.15f);
         CoinIcon.transform.Rotate (0f, 0f, Time.deltaTime * -100f);
@@ -72,12 +72,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void CheckUpgradeCost ()
+    private void CheckResourceCost ()
     {
         foreach (ResourceController resource in _activeResources)
         {
-            bool isUpgradeable = TotalGold >= resource.GetUpgradeCost ();
-            resource.ResourceImage.sprite = ResourcesSprites[isUpgradeable ? 1 : 0];
+            bool isBuyable = TotalGold >= resource.GetUpgradeCost ();
+
+            resource.ResourceImage.sprite = ResourcesSprites[isBuyable ? 1 : 0];
         }
     }
 
